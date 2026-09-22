@@ -1,0 +1,108 @@
+.gbook {
+  padding: 100px 0;
+  background: transparent;
+  position: relative;
+}
+
+.gbook-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Form */
+.gbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: white;
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(28,48,20,0.06);
+  margin-bottom: 32px;
+}
+
+.gbook-input,
+.gbook-textarea {
+  width: 100%;
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+}
+.gbook-input:focus,
+.gbook-textarea:focus {
+  outline: none;
+  border-color: var(--green-400);
+  box-shadow: 0 0 0 3px rgba(120,168,106,0.15);
+}
+
+.gbook-submit {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-700);
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 11px 26px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(40,69,32,0.22);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.gbook-submit:hover {
+  background: var(--green-800);
+  transform: translateY(-2px);
+}
+
+/* Messages */
+.gbook-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gbook-msg {
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-left: 3px solid var(--green-400);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+}
+.gbook-msg-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.gbook-msg-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--green-800);
+}
+.gbook-msg-time {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+.gbook-msg-text {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .gbook { padding: 70px 0; }
+  .gbook-submit { align-self: stretch; justify-content: center; }
+}

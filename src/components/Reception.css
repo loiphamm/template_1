@@ -1,0 +1,210 @@
+.recep {
+  padding: 90px 0;
+  background: transparent;
+  position: relative;
+  text-align: center;
+}
+
+.recep-section-title {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--green-700);
+  margin-bottom: 28px;
+}
+
+.recep-lead {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-medium);
+  margin-bottom: 10px;
+}
+
+.recep-clock {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--green-800);
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+/* Date block (reuse look from winfo) */
+.recep-date-block {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  max-width: 380px;
+  margin: 0 auto 8px;
+  border: 1px solid var(--green-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.recep-date-col {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--green-100);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.recep-date-col:last-child { border-right: none; }
+.recep-date-col--day {
+  flex: 0 0 86px;
+  background: var(--green-800);
+}
+.recep-date-col--day span {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+.recep-year {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.recep-lunar {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-bottom: 26px;
+}
+
+/* Đón khách / Khai tiệc */
+.recep-times {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--green-100);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.recep-time-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 28px;
+}
+.recep-time-label {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.recep-time-value {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--green-800);
+}
+.recep-time-sep { width: 1px; background: var(--green-100); }
+
+/* Calendar */
+.recep-cal {
+  max-width: 360px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 24px rgba(28,48,20,0.06);
+  padding: 20px 18px 16px;
+}
+.recep-cal-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--green-700);
+  margin-bottom: 14px;
+}
+.recep-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.recep-cal-grid--head { margin-bottom: 6px; }
+.recep-cal-wd {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--green-500);
+  padding: 4px 0;
+}
+.recep-cal-day {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-medium);
+  border-radius: 6px;
+}
+.recep-cal-day--empty { color: transparent; }
+.recep-cal-day--wed {
+  background: var(--green-700);
+  color: white;
+  font-weight: 700;
+}
+.recep-cal-heart {
+  position: absolute;
+  font-size: 0.55rem;
+  top: 2px; right: 4px;
+  color: var(--green-200);
+}
+.recep-cal-num { line-height: 1; }
+
+.recep-cal-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 1px;
+  color: var(--green-600);
+  transition: color 0.2s ease;
+}
+.recep-cal-add:hover { color: var(--green-800); }
+
+/* Xác nhận button */
+.recep-confirm { margin-top: 30px; }
+.recep-confirm-btn {
+  display: inline-block;
+  background: var(--green-700);
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 14px 44px;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(40,69,32,0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.recep-confirm-btn:hover {
+  background: var(--green-800);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .recep-time-item { padding: 12px 18px; }
+}

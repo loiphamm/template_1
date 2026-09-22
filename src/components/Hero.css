@@ -1,0 +1,195 @@
+/* ── Couple composition — ported 1:1 from the original "Hoa Mộc Xanh" theme ── */
+.hero {
+  position: relative;
+  background: transparent;
+  padding-top: 140px;   /* mobile: less padding */
+  padding-bottom: 16px;
+}
+
+.hero-couple {
+  position: relative;
+  width: min(320px, 90vw);
+  height: min(440px, 124vw);
+  margin: 0 auto;
+}
+
+/* Full-bleed jasmine band, vertical centre at 43.75% of the box */
+.hero-band {
+  position: absolute;
+  left: 50%;
+  top: 43.75%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-band img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Large fixed jasmine sprig, lower-left */
+.hero-fixed-flower {
+  position: absolute;
+  top: 503px;
+  left: -181.5px;
+  width: 415px;
+  transform: rotate(-60.58deg);
+  z-index: 0;
+  opacity: 0.9;
+  pointer-events: none;
+  user-select: none;
+}
+.hero-fixed-flower img { width: 100%; height: auto; display: block; }
+
+/* Person = photo + name, absolutely placed */
+.hero-person {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-person--groom {
+  left: 20px;
+  top: -40px;
+  z-index: 20;
+}
+.hero-person--bride {
+  left: 55px;
+  top: 165px;
+  z-index: 30;
+  flex-direction: row-reverse;
+}
+
+/* Tilted photo frame: 5px bronze border, 2:3 ratio */
+.hero-photo {
+  position: relative;
+  width: 155px;
+  flex-shrink: 0;
+  border: 5px solid var(--photo-border);
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(28, 48, 20, 0.22);
+}
+.hero-person--groom .hero-photo { transform: rotate(-17deg); }
+.hero-person--bride .hero-photo { transform: rotate(13deg); }
+
+/* Dramatic pendulum entrance: each photo swoops in from far off-screen corner,
+   over-swings past its resting tilt, swings back, then settles
+   (groom −17°, bride +13°). */
+@keyframes heroPhotoInGroom {
+  0%   { opacity: 0; transform: translate(-90px, -70px) rotate(-52deg) scale(0.55); }
+  45%  { opacity: 1; transform: translate(8px, 6px)     rotate(-6deg)  scale(1.1); }
+  68%  { opacity: 1; transform: translate(-2px, -1px)   rotate(-22deg) scale(0.98); }
+  84%  {             transform: translate(0, 0)         rotate(-14deg) scale(1.01); }
+  100% { opacity: 1; transform: translate(0, 0)         rotate(-17deg) scale(1); }
+}
+@keyframes heroPhotoInBride {
+  0%   { opacity: 0; transform: translate(90px, -70px) rotate(50deg)  scale(0.55); }
+  45%  { opacity: 1; transform: translate(-8px, 6px)   rotate(4deg)   scale(1.1); }
+  68%  { opacity: 1; transform: translate(2px, -1px)   rotate(18deg)  scale(0.98); }
+  84%  {             transform: translate(0, 0)        rotate(10deg)  scale(1.01); }
+  100% { opacity: 1; transform: translate(0, 0)        rotate(13deg)  scale(1); }
+}
+/* Entrance animates `transform`; the gentle tilt-wobble below animates the
+   independent `rotate` property so the two compose without overriding. */
+.hero-photo--animate-groom {
+  opacity: 0;
+  animation:
+    heroPhotoInGroom 1.25s cubic-bezier(0.3, 1.3, 0.5, 1) 0.3s forwards,
+    photoWobble 5s ease-in-out 1.7s infinite;
+}
+.hero-photo--animate-bride {
+  opacity: 0;
+  animation:
+    heroPhotoInBride 1.25s cubic-bezier(0.3, 1.3, 0.5, 1) 0.55s forwards,
+    photoWobble 5.6s ease-in-out 2.1s infinite reverse;
+}
+@keyframes photoWobble {
+  0%, 100% { rotate: 0deg; }
+  50%      { rotate: 3.5deg; }
+}
+
+/* Soft glass "shine" sweeping diagonally across each photo */
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 65%);
+  transform: translateX(-160%);
+  animation: heroShine 6s ease-in-out 2s infinite;
+}
+.hero-person--bride .hero-photo::after { animation-delay: 3.4s; }
+@keyframes heroShine {
+  0%        { transform: translateX(-160%); }
+  18%, 100% { transform: translateX(160%); }
+}
+
+/* Gentle continuous "breathing" float so the couple never feels frozen */
+.hero-person--groom { animation: heroFloat 6s ease-in-out 1.7s infinite; }
+.hero-person--bride { animation: heroFloat 7s ease-in-out 2.1s infinite; }
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Force GPU layer + subpixel rendering for rotated images */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.hero-name-block {
+  display: flex;
+  flex-direction: column;
+}
+.hero-person--bride .hero-name-block { align-items: flex-end; }
+
+.hero-birthorder {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink-grey);
+}
+.hero-name {
+  font-family: var(--font-couple);
+  font-size: clamp(26px, 8vw, 36px);
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--green-600);
+}
+
+/* Mobile: nudge the two names so they sit balanced around the green band —
+   groom (above) drops closer to the line, bride (below) eases a touch away. */
+.hero-person--groom .hero-name-block { transform: translateY(24px); }
+.hero-person--bride .hero-name-block { transform: translateY(12px); }
+
+/* ── Desktop proportions (md) ── */
+@media (min-width: 768px) {
+  .hero { padding-top: 330px; padding-bottom: 32px; }
+  .hero-couple { width: 500px; height: 640px; } /* override the vw-based mobile size */
+  .hero-band img { height: 150px; }
+  .hero-band { top: 43.75%; }
+  .hero-fixed-flower { top: 608px; left: -228px; width: 530px; }
+  .hero-person { gap: 16px; }
+  .hero-person--groom { left: 25px; top: -60px; }
+  .hero-person--bride { left: 115px; top: 260px; }
+  .hero-person--groom .hero-name-block,
+  .hero-person--bride .hero-name-block { transform: none; }
+  .hero-photo { width: 235px; }
+  .hero-birthorder { font-size: 16px; }
+  .hero-name { font-size: 46px; }
+}

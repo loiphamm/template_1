@@ -1,0 +1,41 @@
+.anim-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Unified left → right run ──
+   Every character glides in from the left and fades up; the per-char stagger
+   (animationDelay grows with index) makes the reveal "run" left → right.
+   Pure transform + opacity → GPU-smooth, no blur / repaint cost. */
+.anim-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-26px) scale(0.96);
+  will-change: transform, opacity;
+}
+
+.anim-char--in {
+  animation: charRunIn 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes charRunIn {
+  0%   { opacity: 0; transform: translateX(-26px) scale(0.96); }
+  100% { opacity: 1; transform: translateX(0)     scale(1); }
+}
+
+/* Cover / hero names ('grand'): same left → right run, a touch grander & slower */
+.anim-text--grand .anim-char {
+  transform: translateX(-44px) scale(0.9);
+}
+.anim-text--grand .anim-char--in {
+  animation: charRunInGrand 0.82s cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
+}
+@keyframes charRunInGrand {
+  0%   { opacity: 0; transform: translateX(-44px) scale(0.9); }
+  100% { opacity: 1; transform: translateX(0)     scale(1); }
+}
+
+.anim-space {
+  width: 0.3em;
+}

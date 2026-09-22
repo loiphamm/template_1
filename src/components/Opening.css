@@ -1,0 +1,321 @@
+.opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse 95% 80% at 50% 40%, #21401a 0%, #16320f 45%, #081500 100%);
+  transition: opacity 0.95s ease, visibility 0.95s ease;
+  padding: 20px;
+}
+.opening--closing {
+  opacity: 0;
+  visibility: hidden;
+}
+.opening--closing .opening-card {
+  transform: scale(0.93) translateY(-14px);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease;
+}
+
+/* Floating leaves */
+.opening-leaves-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.opening-leaf {
+  position: absolute;
+  top: -24px;
+  border-radius: 60% 10% 60% 10%;
+  animation: leafFall linear infinite;
+}
+@keyframes leafFall {
+  0%   { transform: translateY(-30px) rotate(0deg) translateX(0); opacity: 0; }
+  8%   { opacity: 0.6; }
+  92%  { opacity: 0.15; }
+  100% { transform: translateY(106vh) rotate(460deg) translateX(35px); opacity: 0; }
+}
+
+/* Card entrance */
+@keyframes cardEntrance {
+  0%   { opacity: 0; transform: scale(0.9) translateY(24px); }
+  60%  { opacity: 1; transform: scale(1.015) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Card ── */
+.opening-card {
+  position: relative;
+  background: #F4F1E6;
+  width: min(560px, 92vw);
+  /* No aspect-ratio — height follows content so nothing gets clipped */
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow:
+    0 30px 110px rgba(0,0,0,0.6),
+    0 8px 30px rgba(0,0,0,0.4);
+  transition: transform 0.85s cubic-bezier(0.4,0,0.2,1), opacity 0.75s ease;
+  overflow: hidden;
+  animation: cardEntrance 1.1s cubic-bezier(0.34,1.4,0.64,1) 0.15s both;
+}
+
+/* Real watercolor flower images */
+.opening-flower {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  filter: drop-shadow(0 2px 6px rgba(40,60,30,0.12));
+}
+.opening-flower--tl {
+  top: -56px;
+  left: -64px;
+  width: 320px;
+  height: auto;
+  transform: rotate(-8deg);
+}
+.opening-flower--br {
+  bottom: -70px;
+  right: -56px;
+  width: 270px;
+  height: auto;
+  transform: rotate(168deg);
+}
+
+/* ── Content ── */
+.opening-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px 48px;   /* top: make room for flowers; bottom: breathing space */
+}
+
+/* Heart icon */
+.opening-heart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #1f3d18;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 20px rgba(20,40,12,0.35);
+}
+
+/* Names */
+.opening-groom,
+.opening-bride {
+  font-family: 'Pinyon Script', 'Great Vibes', cursive;
+  font-size: clamp(2.6rem, 9vw, 5.2rem);
+  font-weight: 400;
+  color: #30530F;
+  letter-spacing: 1px;
+  line-height: 1.18;
+  max-width: 100%;
+  padding-inline: 10px;           /* breathing room so script swashes never clip */
+  text-shadow: 0 1px 1px rgba(48, 83, 15, 0.08);  /* static (cheap) — no repaint */
+}
+.opening-bride { margin-bottom: 18px; }
+
+.opening-amp {
+  font-family: 'Pinyon Script', 'Great Vibes', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: #5C8850;
+  display: block;
+  margin: 4px 0;
+  line-height: 1;
+}
+
+/* Divider */
+.opening-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.opening-divider-line {
+  height: 1px;
+  width: 46px;
+  background: #C2D9AE;
+  display: block;
+}
+
+/* Date & invitation */
+.opening-date-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #4A6838;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.opening-than-moi {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: #618050;
+  margin-bottom: 26px;
+}
+
+/* Ripple effect */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.45; }
+  100% { transform: scale(4.5); opacity: 0; }
+}
+.opening-btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  animation: ripple 0.65s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Button */
+.opening-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #2c5320;
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 15px 60px;
+  border-radius: 100px;
+  box-shadow: 0 5px 20px rgba(20,40,12,0.4);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.opening-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 28px rgba(20,40,12,0.5);
+  background: #386825;
+}
+.opening-btn:active { transform: translateY(0); }
+
+/* ── Card burst-out (zoom + fade when opening) ── */
+.opening-card--burst {
+  animation: cardBurstOut 0.9s cubic-bezier(0.5,0,0.75,0) 0.35s forwards;
+}
+@keyframes cardBurstOut {
+  0%   { transform: scale(1); opacity: 1; filter: brightness(1); }
+  40%  { transform: scale(1.08); opacity: 1; filter: brightness(1.15); }
+  100% { transform: scale(1.6); opacity: 0; filter: brightness(1.4); }
+}
+
+/* ── Flower burst overlay ── */
+.burst {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Big central blooming flower */
+.burst-bloom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: auto;
+  margin-left: -130px;
+  margin-top: -130px;
+  transform-origin: center;
+  animation: bloomZoom 1.5s cubic-bezier(0.22,1,0.36,1) forwards;
+  filter: drop-shadow(0 8px 30px rgba(40,60,30,0.25));
+}
+@keyframes bloomZoom {
+  0%   { transform: scale(0.1) rotate(-25deg); opacity: 0; }
+  25%  { opacity: 1; }
+  55%  { transform: scale(1.15) rotate(6deg); opacity: 1; }
+  100% { transform: scale(2.4) rotate(18deg); opacity: 0; }
+}
+
+/* Particles */
+.burst-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation-name: particleFly;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+}
+@keyframes particleFly {
+  0%   { transform: translate(-50%,-50%) scale(0.2) rotate(0deg); opacity: 0; }
+  12%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% {
+    transform:
+      translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(var(--scale)) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* White jasmine petal */
+.burst-petal {
+  background: radial-gradient(ellipse at 50% 72%, #ffffff 0%, #fdfaf2 50%, #ece4d4 100%);
+  border-radius: 50% 50% 48% 48% / 64% 64% 36% 36%;
+  box-shadow: inset 0 -3px 6px rgba(220,210,190,0.4), 0 2px 5px rgba(80,100,60,0.10);
+}
+
+/* Green leaf */
+.burst-leaf {
+  background: linear-gradient(135deg, #a6d086 0%, #6fa84e 55%, #4a7a30 100%);
+  border-radius: 0 60% 0 60%;
+  box-shadow: 0 2px 5px rgba(40,70,25,0.15);
+}
+
+/* Watercolor mini flower */
+.burst-flower img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 3px 10px rgba(40,60,30,0.18));
+}
+
+@media (max-width: 540px) {
+  .opening-flower--tl { width: 200px; top: -36px; left: -44px; }
+  .opening-flower--br { width: 170px; bottom: -44px; right: -36px; }
+  .opening-content { padding: 64px 28px 40px; }
+  .burst-bloom { width: 180px; margin-left: -90px; margin-top: -90px; }
+}
+
+@media (max-width: 420px) {
+  .opening-flower--tl { width: 170px; top: -28px; left: -36px; }
+  .opening-flower--br { width: 145px; bottom: -36px; right: -28px; }
+  .opening-content { padding: 52px 20px 36px; }
+  .opening-heart-icon { width: 44px; height: 44px; margin-bottom: 10px; }
+  .opening-groom, .opening-bride { font-size: clamp(2.4rem, 11vw, 3.1rem); }
+  .opening-amp { font-size: 2.2rem; }
+  .opening-than-moi { font-size: 1.3rem; }
+  .opening-btn { padding: 12px 34px; font-size: 1.05rem; }
+  .opening-than-moi { margin-bottom: 18px; }
+}

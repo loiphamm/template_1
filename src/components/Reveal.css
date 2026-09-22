@@ -1,0 +1,46 @@
+/* ── Universal scroll-reveal animations ── */
+
+/* shared: hidden until .rv--in is added */
+.rv { will-change: transform, opacity; }
+
+/* springy "back-out" easing → gives a lively little bounce on arrival */
+:root {
+  --rv-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --rv-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* fade-up (default) — now rises a touch further + tiny scale for life */
+.rv--up        { opacity: 0; transform: translateY(40px) scale(0.96); }
+.rv--up.rv--in { animation: rv-up 0.85s var(--rv-spring) forwards; }
+@keyframes rv-up {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.96); }
+  60%  { opacity: 1; transform: translateY(-6px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* scale-in (images, cards) — pops in with a gentle overshoot */
+.rv--scale        { opacity: 0; transform: scale(0.86); }
+.rv--scale.rv--in { animation: rv-scale 0.9s var(--rv-spring) forwards; }
+@keyframes rv-scale {
+  0%   { opacity: 0; transform: scale(0.86); }
+  60%  { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* slide from left — travels further + overshoots slightly */
+.rv--left        { opacity: 0; transform: translateX(-56px); }
+.rv--left.rv--in { animation: rv-left 0.8s var(--rv-spring) forwards; }
+@keyframes rv-left {
+  0%   { opacity: 0; transform: translateX(-56px); }
+  65%  { opacity: 1; transform: translateX(6px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* slide from right */
+.rv--right        { opacity: 0; transform: translateX(56px); }
+.rv--right.rv--in { animation: rv-right 0.8s var(--rv-spring) forwards; }
+@keyframes rv-right {
+  0%   { opacity: 0; transform: translateX(56px); }
+  65%  { opacity: 1; transform: translateX(-6px); }
+  100% { opacity: 1; transform: translateX(0); }
+}

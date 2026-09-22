@@ -1,0 +1,226 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.main-content {
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease 0.2s;
+  background: #FFFAF7;
+}
+
+.main-content--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Narrow single-column invitation, centered like the original template */
+.main-content-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #FFFAF7;
+  box-shadow: 0 0 80px rgba(28, 48, 20, 0.06);
+  overflow: hidden;
+}
+
+/* All section content sits above the decorative floral layer.
+   Card is 900px wide (like the original) but the readable content column is
+   capped at 560px and centred; only the decorative flower layer fills the full card. */
+.main-content-inner > section {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Hero + ported sections span the full card width (their content centres itself);
+   only specific inner elements (gallery grid, map) are capped at 560 inside. */
+.main-content-inner > .hero,
+.main-content-inner > #thong-tin,
+.main-content-inner > #anh-cuoi,
+.main-content-inner > #tiec-cuoi,
+.main-content-inner > #dia-diem,
+.main-content-inner > #lich-trinh,
+.main-content-inner > #so-luu-but,
+.main-content-inner > #mung-cuoi {
+  max-width: 100%;
+}
+
+/* ── Floral border running down both column edges ── */
+.flower-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flower-bg-item {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  scale: 1.32;   /* enlarge background jasmine (composes with rotate + sway) */
+  will-change: transform, translate;
+  animation: flowerSway 9s ease-in-out infinite;
+}
+
+/* Flowers anchored INSIDE a section (move with that section's content).
+   Sit behind the section's text (z-index:-1) but above the cream card. */
+.sec-flower {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  scale: 1.32;   /* enlarge section jasmine (composes with rotate + sway) */
+  will-change: transform, translate;
+  animation: flowerSway 10s ease-in-out infinite;
+}
+
+/* Gentle floating sway. Uses the independent `translate` property so it composes
+   with each flower's `transform: rotate(...)` instead of overriding it. */
+@keyframes flowerSway {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+@keyframes flowerSwayWide {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 8px -10px; }
+}
+
+/* Stagger durations/offsets so the garden breathes organically, not in lockstep */
+.fbg-1, .fbg-rc8, .fbg-gb      { animation-duration: 8s;  animation-delay: -2s; }
+.fbg-2, .fbg-rc9, .fbg-lo11    { animation-name: flowerSwayWide; animation-duration: 11s; animation-delay: -4s; }
+.fbg-4, .fbg-7, .fbg-wi5       { animation-duration: 12s; animation-delay: -1s; }
+.fbg-5, .fbg-9, .fbg-env, .fbg-rsvp { animation-name: flowerSwayWide; animation-duration: 13s; animation-delay: -6s; }
+.fbg-6, .fbg-11, .fbg-rcr      { animation-duration: 9.5s; animation-delay: -3s; }
+.fbg-3, .fbg-12, .fbg-ti10     { animation-duration: 10.5s; animation-delay: -5s; }
+
+/* ── Thông tin: big left faded (was fbg-5) ── */
+.fbg-wi5 { top: 360px; left: -150px; width: 940px; opacity: .18; transform: rotate(132deg); }
+@media (min-width: 768px)  { .fbg-wi5 { top: 168px; left: -200px; width: 1240px; } }
+@media (min-width: 1024px) { .fbg-wi5 { top: 278px; left: -240px; width: 1480px; } }
+
+/* ── Thông tin: right small jasmine (was fbg-6) ── */
+.fbg-wi6 { top: 500px; right: -170px; width: 360px; transform: rotate(-36deg) scaleX(-1); }
+@media (min-width: 768px)  { .fbg-wi6 { top: 308px; right: -230px; width: 490px; } }
+@media (min-width: 1024px) { .fbg-wi6 { top: 448px; right: -280px; width: 575px; } }
+
+/* ── Album: right faded jasmine (was fbg-7) ── */
+.fbg-al7 { top: 70px; right: -390px; width: 940px; opacity: .18; transform: rotate(122deg); }
+@media (min-width: 768px)  { .fbg-al7 { right: -580px; width: 1255px; } }
+@media (min-width: 1024px) { .fbg-al7 { right: -620px; width: 1515px; } }
+
+/* ── Tiệc cưới: prominent left jasmine sprig (was fbg-8) ── */
+.fbg-rc8 { top: -75px; left: -430px; width: 700px; transform: rotate(0deg); }
+@media (min-width: 768px)  { .fbg-rc8 { left: -480px; width: 900px; } }
+@media (min-width: 1024px) { .fbg-rc8 { left: -560px; width: 1075px; } }
+
+/* ── Tiệc cưới: big left faded jasmine (covers below the calendar) ── */
+.fbg-rc9 { top: 280px; left: -340px; width: 1330px; opacity: .18; transform: rotate(128deg); }
+@media (min-width: 768px)  { .fbg-rc9 { left: -450px; width: 1780px; } }
+@media (min-width: 1024px) { .fbg-rc9 { left: -540px; width: 2150px; } }
+
+/* ── Tiệc cưới: right faded jasmine (covers below the calendar, right side; rot ~20° shows blooms) ── */
+.fbg-rcr { top: 300px; right: -190px; width: 575px; opacity: .18; transform: rotate(20deg); }
+@media (min-width: 768px)  { .fbg-rcr { right: -250px; width: 750px; } }
+@media (min-width: 1024px) { .fbg-rcr { right: -300px; width: 875px; } }
+
+/* ── Địa điểm: right small jasmine (was fbg-11) ── */
+.fbg-lo11 { top: 30px; right: -170px; width: 360px; transform: rotate(-36deg) scaleX(-1); }
+@media (min-width: 768px)  { .fbg-lo11 { right: -230px; width: 490px; } }
+@media (min-width: 1024px) { .fbg-lo11 { right: -280px; width: 575px; } }
+
+/* ── Lịch trình: lower-left jasmine (was fbg-10) ── */
+.fbg-ti10 { top: 20px; left: -38%; width: 370px; transform: rotate(176deg); }
+@media (min-width: 768px)  { .fbg-ti10 { width: 500px; } }
+@media (min-width: 1024px) { .fbg-ti10 { width: 600px; } }
+
+/* ── Xác nhận tham dự: left faded jasmine ── */
+.fbg-rsvp { top: 60px; left: -180px; width: 480px; opacity: .18; transform: rotate(150deg); }
+@media (min-width: 768px)  { .fbg-rsvp { left: -240px; width: 620px; } }
+@media (min-width: 1024px) { .fbg-rsvp { left: -280px; width: 720px; } }
+
+/* ── Sổ lưu bút: right faded jasmine (rot ~20° shows blooms) ── */
+.fbg-gb { top: 160px; right: -190px; width: 575px; opacity: .2; transform: rotate(20deg); }
+@media (min-width: 768px)  { .fbg-gb { right: -260px; width: 775px; } }
+@media (min-width: 1024px) { .fbg-gb { right: -300px; width: 900px; } }
+
+/* ── Phong bao: faint jasmine top-right ── */
+.fbg-env { top: -40px; right: -160px; width: 450px; opacity: .18; transform: rotate(20deg); }
+@media (min-width: 768px)  { .fbg-env { right: -220px; width: 600px; } }
+@media (min-width: 1024px) { .fbg-env { right: -260px; width: 700px; } }
+
+/* ── Flower positions/sizes — exact mobile / md(≥768) / lg(≥1024) values from the original ── */
+.fbg-1  { top: -360px; left: 70px;    width: 770px;    transform: rotate(-0.76deg); }
+.fbg-2  { top: 0px;    left: -110px;  width: 560px;    opacity: .22; transform: rotate(142deg) scaleX(-1); }
+.fbg-3  { top: 480px;  left: -230px;  width: 520px;    transform: rotate(-60.58deg); }
+.fbg-4  { top: 280px;  right: -260px; width: 760px;    opacity: .18; transform: rotate(152deg); }
+.fbg-5  { top: 1030px; left: -150px;  width: 940px;    opacity: .18; transform: rotate(132deg); }
+.fbg-6  { top: 1165px; right: -170px; width: 360px;    transform: rotate(-36deg) scaleX(-1); }
+.fbg-7  { top: 1830px; right: -270px; width: 940px;    opacity: .18; transform: rotate(122deg); }
+.fbg-8  { top: 2335px; left: -430px;  width: 700px;    transform: rotate(0deg); }
+.fbg-9  { top: 2530px; left: -340px;  width: 1330px;   opacity: .18; transform: rotate(128deg); }
+.fbg-10 { top: 4050px; left: -38%;    width: 370px;    transform: rotate(176deg); }
+.fbg-11 { top: 2945px; right: -170px; width: 360px;    transform: rotate(-36deg) scaleX(-1); }
+.fbg-12 { bottom: 90px; right: -440px; width: 750px;   opacity: .22; transform: rotate(139deg); }
+
+@media (min-width: 768px) {
+  .fbg-1  { top: -420px; left: 90px;   width: 950px; }
+  .fbg-2  { top: 12px;   left: -90px;  width: 635px; }
+  .fbg-3  { top: 580px;  left: -280px; width: 660px; }
+  .fbg-4  { top: 340px;  right: -360px; width: 1000px; }
+  .fbg-5  { top: 1170px; left: -200px; width: 1240px; }
+  .fbg-6  { top: 1305px; right: -230px; width: 490px; }
+  .fbg-7  { top: 2000px; right: -400px; width: 1255px; }
+  .fbg-8  { top: 2535px; left: -480px; width: 900px; }
+  .fbg-9  { top: 2705px; left: -450px; width: 1780px; }
+  .fbg-10 { top: 3870px; left: -38%;   width: 500px; }
+  .fbg-11 { top: 3140px; right: -230px; width: 490px; }
+  .fbg-12 { width: 975px; }
+}
+
+@media (min-width: 1024px) {
+  .fbg-1  { top: -510px; left: 120px;  width: 1120px; }
+  .fbg-2  { top: 18px;   left: -70px;  width: 760px; }
+  .fbg-3  { top: 670px;  left: -340px; width: 810px; }
+  .fbg-4  { top: 390px;  right: -430px; width: 1200px; }
+  .fbg-5  { top: 1280px; left: -240px; width: 1480px; }
+  .fbg-6  { top: 1445px; right: -280px; width: 575px; }
+  .fbg-7  { top: 2160px; right: -430px; width: 1515px; }
+  .fbg-8  { top: 2735px; left: -560px; width: 1075px; }
+  .fbg-9  { top: 2880px; left: -540px; width: 2150px; }
+  .fbg-10 { top: 4070px; left: -38%;   width: 600px; }
+  .fbg-11 { top: 3325px; right: -280px; width: 575px; }
+}
+
+@media (max-width: 640px) {
+  .main-content-inner { box-shadow: none; }
+}
+
+/* ── Mobile flower size reductions (avoid overflowing 360px viewport) ── */
+@media (max-width: 480px) {
+  .fbg-1  { width: 370px; left: 10px; }
+  .fbg-2  { width: 270px; left: -60px; }
+  .fbg-3  { width: 280px; left: -110px; }
+  .fbg-4  { width: 350px; right: -120px; }
+  .fbg-5  { width: 420px; left: -90px; }
+  .fbg-6  { width: 200px; right: -85px; }
+  .fbg-7  { width: 400px; right: -130px; }
+  .fbg-8  { width: 330px; left: -170px; }
+  .fbg-9  { width: 560px; left: -160px; }
+  .fbg-11 { width: 200px; right: -85px; }
+  /* sec-flowers */
+  .fbg-rc8 { width: 350px; left: -220px; }
+  .fbg-rc9 { width: 560px; left: -160px; }
+  .fbg-rcr { width: 280px; right: -100px; }
+  .fbg-lo11 { width: 200px; right: -85px; }
+  .fbg-gb  { width: 280px; right: -100px; }
+  .fbg-rsvp { width: 240px; left: -90px; }
+  .fbg-env { width: 230px; right: -80px; }
+  .fbg-ti10 { width: 200px; }
+}

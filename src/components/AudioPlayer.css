@@ -1,0 +1,156 @@
+/* The container is fixed; the button is the ONLY element in normal flow.
+   Nothing can push it up/down. */
+.aplayer {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 800;
+  width: 56px;
+  height: 56px;
+}
+
+/* Button fills the fixed container exactly — position never changes */
+.aplayer-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1e4018, #2d6e24);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35), 0 0 0 2px rgba(196,154,60,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.aplayer-disc:hover  { transform: scale(1.1);  box-shadow: 0 6px 28px rgba(0,0,0,0.45), 0 0 0 3px rgba(196,154,60,0.5); }
+.aplayer-disc:active { transform: scale(0.97); }
+
+/* Panel */
+.aplayer-panel {
+  background: rgba(26, 61, 20, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(196, 154, 60, 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px 16px 12px;
+  margin-bottom: 10px;
+  width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.aplayer-info {
+  margin-bottom: 12px;
+}
+
+.aplayer-song {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aplayer-artist {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.72rem;
+  color: rgba(196, 154, 60, 0.7);
+}
+
+/* Progress & volume */
+.aplayer-progress-wrap {
+  margin-bottom: 10px;
+}
+
+.aplayer-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.aplayer-progress-bar {
+  background: rgba(255,255,255,0.15);
+}
+
+.aplayer-progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold-300);
+  cursor: pointer;
+}
+
+.aplayer-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aplayer-play-btn {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-400));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(74,144,64,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aplayer-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 14px rgba(74,144,64,0.5);
+}
+
+.aplayer-vol-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  color: rgba(255,255,255,0.5);
+}
+
+.aplayer-vol-bar {
+  background: rgba(255,255,255,0.12);
+  flex: 1;
+}
+
+.aplayer-vol-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+/* Floating music note — absolute so it doesn't affect layout */
+.aplayer-note-1 {
+  position: absolute;
+  bottom: 62px; right: 4px;
+  color: rgba(196,154,60,0.7);
+  font-size: 1rem;
+  animation: noteFloat 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes noteFloat {
+  0%   { transform: translateY(0) rotate(-10deg); opacity: 0.8; }
+  100% { transform: translateY(-30px) rotate(10deg); opacity: 0; }
+}
+
+@media (max-width: 500px) {
+  .aplayer { bottom: 16px; right: 16px; }
+}
