@@ -131,8 +131,8 @@ export default function WeddingInfo() {
 
       {/* Wedding ceremony (Lễ Thành Hôn) */}
       <CeremonyBlock
-        header={'Lễ Thành Hôn Được Cử Hành Tại\nNhà Cô Dâu'}
-        time="7:00"
+        header={'Lễ Thành Hôn Được Cử Hành Tại\nNhà Chú Rể'}
+        time="10:30"
         weekday="Chủ Nhật"
         day="25"
         month="Tháng 10"
