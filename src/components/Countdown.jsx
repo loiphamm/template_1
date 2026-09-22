@@ -48,7 +48,7 @@ export default function Countdown({ weddingDate }) {
             <span /><span className="cdown-star">✦</span><span />
           </div>
           {time.passed ? (
-            <p className="cdown-passed">Hôm nay là ngày hạnh phúc của chúng tôi! 🎉</p>
+            <p className="cdown-passed">Hôm nay là ngày hạnh phúc của con chúng tôi! 🎉</p>
           ) : (
             <div className="cdown-boxes">
               <CountBox value={time.days} label="Ngày" />

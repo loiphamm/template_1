@@ -47,7 +47,7 @@ export default function Footer() {
 
         <p className="footer-date-str">25 · 10 · 2026</p>
         <p className="footer-tagline">
-          "Hẹn gặp lại trong ngày trọng đại của chúng tôi"
+          "Hẹn gặp lại trong ngày trọng đại của con chúng tôi"
         </p>
 
         <div className="footer-divider">

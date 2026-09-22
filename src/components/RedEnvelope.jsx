@@ -18,7 +18,8 @@ const titleStyle = {
 
 const accounts = [
   // { label: 'Chú Rể - Hà Việt Dũng  ',        qr: '/photos/qr-groom.jpg', bank: 'VPBank', number: '0941735992',   name: 'TRAN DUC LINH' },
-  { label: 'Cô Dâu - Bùi Như Thuận ',  qr: '/photos/qr-bride.jpg', bank: 'MB Bank', number: '9389826551', name: 'BUI NHU LUAN' },
+  // { label: 'Cô Dâu - Bùi Như Thuận ',  qr: '/photos/qr-bride.jpg', bank: 'MB Bank', number: '9389826551', name: 'BUI NHU LUAN' },
+  { label: 'Mẹ Chú Rể - Hà Việt Dũng  ',        qr: '/photos/qr-grooms mother.jpg', bank: 'VietTinBank', number: '101000260338',   name: 'PHAN THI THANH TAM' },
  ]
 
 /* Greek-key (fret) gold corner bracket */

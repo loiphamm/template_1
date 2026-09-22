@@ -102,7 +102,7 @@ export default function WeddingInfo() {
       <Reveal as="div" className="text-center text-[15px] md:text-[18px] flex flex-col gap-1 mb-6 md:mb-8 uppercase"
         style={{ fontFamily: SERIF, color: PRIMARY }}>
         <span>Trân Trọng Kính Mời</span>
-        <span>Tới Dự Bữa Tiệc Mừng Lễ Thành Hôn Của Hai Chúng Tôi</span>
+        <span>Tới Dự Bữa Tiệc Mừng Lễ Thành Hôn Của Con Chúng Tôi</span>
       </Reveal>
 
       {/* Couple names */}
