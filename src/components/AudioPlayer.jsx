@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import './AudioPlayer.css'
 
-export default function AudioPlayer({ autoPlay = false }) {
+export default function AudioPlayer({ autoPlay = false, hidden = false }) {
   const [playing, setPlaying]   = useState(false)
   const [progress, setProgress] = useState(0)
   const [volume, setVolume]     = useState(0.6)
@@ -64,21 +64,25 @@ export default function AudioPlayer({ autoPlay = false }) {
   }
 
   return (
-    <div className={`aplayer ${playing ? 'aplayer--playing' : ''}`}>
+    <div className={`aplayer ${playing ? 'aplayer--playing' : ''} ${hidden ? 'aplayer--hidden' : ''}`}>
       <audio ref={audioRef} src="https://cdn.chungdoi.com/music/my-love-westlife.mp3" preload="none" />
 
-      {/* Play/Pause button — single fixed-size SVG, no layout shift */}
-      <button className="aplayer-disc" onClick={togglePlay}
-        title={playing ? 'Tạm dừng' : 'Phát nhạc'}>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="white"
-          style={{ display:'block', flexShrink:0 }}>
-          {playing
-            ? <><rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/></>
-            : <polygon points="5,2 17,10 5,18"/>}
-        </svg>
-      </button>
+      {!hidden && (
+        <>
+          {/* Play/Pause button — single fixed-size SVG, no layout shift */}
+          <button className="aplayer-disc" onClick={togglePlay}
+            title={playing ? 'Tạm dừng' : 'Phát nhạc'}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="white"
+              style={{ display:'block', flexShrink:0 }}>
+              {playing
+                ? <><rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/></>
+                : <polygon points="5,2 17,10 5,18"/>}
+            </svg>
+          </button>
 
-      {playing && <div className="aplayer-note-1">♪</div>}
+          {playing && <div className="aplayer-note-1">♪</div>}
+        </>
+      )}
     </div>
   )
 }

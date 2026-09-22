@@ -2,14 +2,14 @@
 .hero {
   position: relative;
   background: transparent;
-  padding-top: 140px;   /* mobile: less padding */
+  padding-top: clamp(110px, 18vw, 330px);
   padding-bottom: 16px;
 }
 
 .hero-couple {
   position: relative;
-  width: min(320px, 90vw);
-  height: min(440px, 124vw);
+  width: clamp(300px, 52vw, 500px);
+  height: clamp(360px, 90vw, 640px);
   margin: 0 auto;
 }
 
@@ -49,16 +49,16 @@
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(10px, 2vw, 16px);
 }
 .hero-person--groom {
-  left: 20px;
-  top: -40px;
+  left: clamp(2px, 2vw, 15px);
+  top: clamp(-30px, -2.4vw, -60px);
   z-index: 20;
 }
 .hero-person--bride {
-  left: 55px;
-  top: 165px;
+  left: clamp(24px, 6vw, 95px);
+  top: clamp(135px, 31vw, 260px);
   z-index: 30;
   flex-direction: row-reverse;
 }
@@ -66,7 +66,7 @@
 /* Tilted photo frame: 5px bronze border, 2:3 ratio */
 .hero-photo {
   position: relative;
-  width: 155px;
+  width: clamp(150px, 27vw, 295px);
   flex-shrink: 0;
   border: 5px solid var(--photo-border);
   overflow: hidden;
@@ -174,22 +174,21 @@
 
 /* Mobile: nudge the two names so they sit balanced around the green band —
    groom (above) drops closer to the line, bride (below) eases a touch away. */
-.hero-person--groom .hero-name-block { transform: translateY(24px); }
-.hero-person--bride .hero-name-block { transform: translateY(12px); }
+.hero-person--groom .hero-name-block { transform: translateY(clamp(10px, 2vw, 24px)); }
+.hero-person--bride .hero-name-block { transform: translateY(clamp(8px, 1.2vw, 12px)); }
 
 /* ── Desktop proportions (md) ── */
 @media (min-width: 768px) {
   .hero { padding-top: 330px; padding-bottom: 32px; }
-  .hero-couple { width: 500px; height: 640px; } /* override the vw-based mobile size */
   .hero-band img { height: 150px; }
   .hero-band { top: 43.75%; }
   .hero-fixed-flower { top: 608px; left: -228px; width: 530px; }
   .hero-person { gap: 16px; }
-  .hero-person--groom { left: 25px; top: -60px; }
-  .hero-person--bride { left: 115px; top: 260px; }
+  .hero-person--groom { left: clamp(8px, 1.5vw, 15px); top: -60px; }
+  .hero-person--bride { left: clamp(72px, 10vw, 100px); top: clamp(220px, 38vw, 260px); }
   .hero-person--groom .hero-name-block,
   .hero-person--bride .hero-name-block { transform: none; }
-  .hero-photo { width: 235px; }
+  .hero-photo { width: clamp(195px, 22vw, 270px); }
   .hero-birthorder { font-size: 16px; }
-  .hero-name { font-size: 46px; }
+  .hero-name { font-size: clamp(30px, 4vw, 46px); }
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import flowerImg from '../assets/flower.webp'
 import './RedEnvelope.css'
 
@@ -64,8 +64,17 @@ const COINS = [
   { idx: 5, size: 20, pos: { top: '46%',  right: '-14%' } },
 ]
 
-export default function RedEnvelope() {
-  const [open, setOpen] = useState(false)
+export default function RedEnvelope({ open, setOpen }) {
+  useEffect(() => {
+    if (!open) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [open])
 
   return (
     <section id="mung-cuoi" className="relative z-10 flex flex-col items-center text-center pt-8 md:pt-12 pb-10 md:pb-14 px-6">
@@ -111,8 +120,8 @@ export default function RedEnvelope() {
 
       {/* Modal */}
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4" onClick={() => setOpen(false)}>
-          <div className="relative w-full max-w-[640px] overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4" onClick={() => setOpen(false)}>
+          <div className="relative z-[10000] w-full max-w-[640px] overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-6 py-4" style={{ backgroundColor: PRIMARY }}>
               <h3 className="text-lg md:text-xl text-white" style={{ fontFamily: SERIF }}>Phong Bao Mừng Cưới</h3>
               <button onClick={() => setOpen(false)} aria-label="Đóng" className="text-white text-2xl leading-none hover:opacity-70">✕</button>
@@ -120,10 +129,10 @@ export default function RedEnvelope() {
 
             <div className="flex justify-center gap-2 md:gap-4 p-3 md:p-6" style={{ color: PRIMARY, fontFamily: SERIF }}>
               {accounts.map((a) => (
-                <div key={a.number} className="flex w-full max-w-[320px] flex-col items-center text-center">
+                <div key={a.number} className="flex w-full max-w-[360px] flex-col items-center text-center">
                   <p className="text-xs md:text-base font-medium mb-2">{a.label}</p>
-                  <div className="rounded-xl bg-white p-1 md:p-2" style={{ border: `2px solid ${PRIMARY}20` }}>
-                    <img src={a.qr} alt={`QR ${a.bank}`} className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 object-contain" loading="lazy" />
+                  <div className="rounded-xl bg-white p-2 md:p-3 shadow-sm" style={{ border: `2px solid ${PRIMARY}20`, width: 'min(200px, 55vw)', height: 'min(200px, 55vw)' }}>
+                    <img src={a.qr} alt={`QR ${a.bank}`} className="w-full h-full object-contain" loading="lazy" />
                   </div>
                   <p className="mt-3 text-sm">{a.bank}</p>
                   <p className="text-sm font-mono">{a.number}</p>

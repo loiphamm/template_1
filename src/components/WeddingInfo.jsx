@@ -14,11 +14,11 @@ const titleStyle = {
 
 function FamilySide({ title, father, mother, address }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2 drop-shadow-[0_1px_5px_rgba(255,255,255,0.8)]">
       <span style={{ color: PRIMARY, fontFamily: SERIF }}>{title}</span>
-      <span className="text-[12px] md:text-[23px]" style={{ color: PRIMARY, fontFamily: SERIF, fontWeight: 600 }}>{father}</span>
-      <span className="text-[12px] md:text-[23px]" style={{ color: PRIMARY, fontFamily: SERIF, fontWeight: 600 }}>{mother}</span>
-      <div className="mt-1 w-[90%] md:w-[80%] mx-auto whitespace-pre-line flex flex-col" style={{ color: PRIMARY, fontFamily: SERIF, fontSize: '10px' }}>{address}</div>
+      <span className="text-[14px] md:text-[23px] leading-tight" style={{ color: PRIMARY, fontFamily: SERIF, fontWeight: 600 }}>{father}</span>
+      <span className="text-[14px] md:text-[23px] leading-tight" style={{ color: PRIMARY, fontFamily: SERIF, fontWeight: 600 }}>{mother}</span>
+      <div className="mt-1 w-full md:w-[90%] mx-auto whitespace-pre-line flex flex-col leading-relaxed" style={{ color: PRIMARY, fontFamily: SERIF, fontSize: '11px' }}>{address}</div>
     </div>
   )
 }
