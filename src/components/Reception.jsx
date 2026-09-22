@@ -76,33 +76,33 @@ export default function Reception() {
 
       <Reveal className="flex flex-col items-center gap-4 md:gap-5 text-center" style={{ fontFamily: SERIF, color: PRIMARY }}>
         <h3 className="font-normal uppercase text-[20px] md:text-[26px]">Tiệc cưới sẽ diễn ra vào lúc:</h3>
-        <div className="text-[20px] md:text-[30px]">10:30</div>
+        <div className="text-[20px] md:text-[30px]">17:30</div>
 
         <div className="flex items-center gap-3 md:gap-6">
-          <span className="text-[11px] md:text-[16px] uppercase text-right" style={{ fontWeight: 600 }}>Chủ Nhật</span>
+          <span className="text-[11px] md:text-[16px] uppercase text-right" style={{ fontWeight: 600 }}>Thứ Bảy</span>
           <Bar />
-          <span className="text-[26px] md:text-[40px]" style={{ fontWeight: 600 }}>25</span>
+          <span className="text-[26px] md:text-[40px]" style={{ fontWeight: 600 }}>24</span>
           <Bar />
           <span className="text-[11px] md:text-[16px] uppercase text-left" style={{ fontWeight: 600 }}>Tháng 10</span>
         </div>
 
         <div className="text-[18px] md:text-[24px]">2026</div>
-        <div className="text-xs md:text-base uppercase tracking-[0.25em]">(Tức ngày 16/09 năm Bính Ngọ)</div>
+        <div className="text-xs md:text-base uppercase tracking-[0.25em]">(Tức ngày 15/09 năm Bính Ngọ)</div>
 
         <div className="flex items-center justify-center gap-8 mt-4">
           <div className="flex flex-col items-center">
             <span className="text-xs uppercase tracking-wider">Đón khách</span>
-            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>10:30</span>
+            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>17:30</span>
           </div>
           <div className="flex flex-col items-center">
             <span className="text-xs uppercase tracking-wider">Khai tiệc</span>
-            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>11:00</span>
+            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>18:00</span>
           </div>
         </div>
 
-        <MiniCalendar year={2026} month={10} day={25} />
+        <MiniCalendar year={2026} month={10} day={24} />
 
-        <a
+        {/* <a
           href={CALENDAR_URL}
           target="_blank"
           rel="noopener noreferrer"
@@ -110,7 +110,7 @@ export default function Reception() {
           style={{ color: PRIMARY }}
         >
           Thêm vào lịch
-        </a>
+        </a> */}
       </Reveal>
     </section>
   )
