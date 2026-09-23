@@ -102,7 +102,7 @@ export default function Reception() {
 
         <MiniCalendar year={2026} month={10} day={25} />
 
-        <a
+        {/* <a
           href={CALENDAR_URL}
           target="_blank"
           rel="noopener noreferrer"
@@ -110,7 +110,7 @@ export default function Reception() {
           style={{ color: PRIMARY }}
         >
           Thêm vào lịch
-        </a>
+        </a> */}
       </Reveal>
     </section>
   )

@@ -35,6 +35,9 @@ function FlowerBackground() {
 
 function App() {
   const [opened, setOpened] = useState(false)
+  const [giftOpen, setGiftOpen] = useState(false)
+  const [galleryOpen, setGalleryOpen] = useState(false)
+  const modalOpen = giftOpen || galleryOpen
 
   return (
     <div className="app">
@@ -44,16 +47,16 @@ function App() {
           <FlowerBackground />
           <Hero />
           <WeddingInfo />
-          <Gallery />
+          <Gallery onLightboxToggle={setGalleryOpen} />
           <Reception />
           <Location />
           <LoveStory />
           {/* <RSVP /> */}
           {/* <Guestbook /> */}
-          <RedEnvelope />
+          <RedEnvelope open={giftOpen} setOpen={setGiftOpen} />
           <Footer />
         </div>
-        <AudioPlayer autoPlay={opened} />
+        <AudioPlayer autoPlay={opened} hidden={modalOpen} />
       </div>
     </div>
   )
