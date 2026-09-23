@@ -12,17 +12,17 @@ const LINE = 'color-mix(in srgb, #30530F 40%, transparent)'
 const titleStyle = {
   color: PRIMARY,
   fontFamily: '"Times New Roman", serif',
-  fontSize: '24px',
+  fontSize: '20px',
   fontWeight: 700,
   letterSpacing: '1px',
 }
 
 const events = [
-  { id: 1, time: '10:30', label: 'Đón khách' },
-  { id: 2, time: '11:00', label: 'Khai tiệc' },
-  { id: 3, time: '11:20', label: 'Rót rượu, cắt bánh' },
-  { id: 4, time: '11:40', label: 'Phục vụ món chính' },
-  { id: 5, time: '13:40', label: 'Kết thúc tiệc' },
+  { id: 1, time: '10:15', label: 'Đón khách' },
+  { id: 2, time: '10:45', label: 'Khai tiệc' },
+  { id: 3, time: '10:55', label: 'Rót rượu, cắt bánh' },
+  { id: 4, time: '11:10', label: 'Phục vụ món chính' },
+  { id: 5, time: '12:25', label: 'Kết thúc tiệc' },
 ]
 
 export default function LoveStory() {

@@ -92,11 +92,11 @@ export default function Reception() {
         <div className="flex items-center justify-center gap-8 mt-4">
           <div className="flex flex-col items-center">
             <span className="text-xs uppercase tracking-wider">Đón khách</span>
-            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>10:30</span>
+            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>10:15</span>
           </div>
           <div className="flex flex-col items-center">
             <span className="text-xs uppercase tracking-wider">Khai tiệc</span>
-            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>11:00</span>
+            <span className="text-lg md:text-xl mt-1" style={{ fontWeight: 600 }}>10:45</span>
           </div>
         </div>
 
