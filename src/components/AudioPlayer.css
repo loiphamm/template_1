@@ -9,6 +9,12 @@
   height: 56px;
 }
 
+.aplayer--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 /* Button fills the fixed container exactly — position never changes */
 .aplayer-disc {
   position: absolute;
