@@ -17,7 +17,7 @@ export default function Location() {
       <img src={flowerImg} alt="" className="sec-flower fbg-lo11" />
 
       <Reveal as="h2" className="text-center uppercase" style={sectionTitleStyle}>
-        <AnimatedText text="Tiệc Cưới Sẽ Tổ Chức Tại" charDelay={38} from="sides" />
+        <AnimatedText text="Tiệc Cưới Sẽ Tổ Chức" charDelay={38} from="sides" />
       </Reveal>
 
       <Reveal className="mx-auto mt-3 max-w-sm md:max-w-[500px] text-center text-sm md:text-base tracking-wide whitespace-pre-line flex flex-col items-center pb-3"
