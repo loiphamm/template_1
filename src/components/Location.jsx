@@ -8,7 +8,7 @@ const sectionTitleStyle = {
   color: PRIMARY, fontFamily: '"Times New Roman", serif',
   fontSize: '20px', fontWeight: 700, letterSpacing: '1px',
 }
-const ADDRESS = 'Tại Gia Đình Cô Dâu\nCây số 9, Xóm Re, Xã Đại Đồng, Tỉnh Phú Thọ'
+const ADDRESS = 'Gia Đình Cô Dâu\nCây số 9, Xóm Re, Xã Đại Đồng, Tỉnh Phú Thọ'
 const MAPS_EMBED_URL = 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4566.594752318561!2d105.5062256!3d20.425714499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDI1JzMyLjYiTiAxMDXCsDMwJzIyLjQiRQ!5e1!3m2!1svi!2s!4v1790061307639!5m2!1svi!2s'
 
 export default function Location() {

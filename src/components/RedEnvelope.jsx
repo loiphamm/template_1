@@ -11,7 +11,7 @@ const SERIF = '"Baskerville", "Times New Roman", serif'
 const titleStyle = {
   color: PRIMARY,
   fontFamily: '"Times New Roman", serif',
-  fontSize: '24px',
+  fontSize: '20px',
   fontWeight: 700,
   letterSpacing: '1px',
 }
